@@ -1,0 +1,239 @@
+body {
+    font-family: sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+.navbar {
+    background-color: white;
+}
+
+
+.airbnb-logo {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info {
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
+}
+
+/* cards */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-info {
+    color: #222222;
+}
+
+.card-text p {
+    font-weight: 400;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+.effect {
+    opacity: 0.99;
+}
+
+.effect:hover {
+    opacity: 1;
+    box-shadow: 0px 0px 5px 1px black;
+}
+
+/* add new listing */
+
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* show Page */
+.show-img {
+    height: 30vh;
+}
+
+.btns {
+    display: flex;
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.filter {
+    text-align: center;
+}
+
+.filter button {
+    border: none;
+    background-color: white;
+}
+
+.filters {
+    font-size: 0.8rem;
+}
+
+.taxCal {
+    font-size: 0.9rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+/* aboutus page */
+.aboutus {
+    width: 23rem;
+    height: 20rem;
+    margin-left: 1rem;
+}
+
+.size {
+    font-size: 0.9rem;
+}
+
+/* contact us page */
+.contactImg {
+    width: 50vh;
+    height: 50vh;
+}
+
+.contactInfo {
+    width: 50vh;
+    height: 50vh;
+}
+
+@media (max-width: 768px) {
+    .contactImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .contactInfo {
+        width: 100%;
+        height: auto;
+    }
+
+    .socialmedia ul li a {
+        font-size: 0.9rem !important;
+    }
+
+    .socialmedia {
+        margin-top: 1rem;
+        margin-left: 0rem;
+        padding: 0 !important;
+    }
+
+    .hedding {
+        margin: 0 !important;
+    }
+
+}
+
+@media(min-width:769px) {
+    .contactInfo {
+        line-height: 2rem;
+        margin-top: 3rem !important;
+    }
+
+    .mclass {
+        margin-left: 5rem;
+    }
+
+    .hedding {
+        text-align: center;
+    }
+
+    .contactImg {
+        width: 100%;
+        height: auto;
+    }
+
+
+}
+
+@media(max-width:1300px) {
+    .contactImg {
+        width: 100%;
+        height: auto;
+    }
+
+    .contactInfo {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+.socialmedia {
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.socialmedia ul {
+    list-style: none;
+    padding: 0;
+}
+
+.socialmedia ul li {
+    margin: 10px 0;
+}
+
+.socialmedia ul li a {
+    margin: 1rem;
+    text-decoration: none;
+    color: #222222;
+    font-size: 1rem;
+}
