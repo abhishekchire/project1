@@ -16,6 +16,10 @@
             width: auto;
             display: block;
         }
+
+        .btn-size{
+            margin-left: 1rem;
+        }
     }
 </style>
 <%- layout("/layouts/boilerplate") %>
@@ -25,7 +29,7 @@
                     <%= listing.title %>
                 </b></h3>
         </div>
-        <div class="card col-6 offset-lg-3 show-card listing-card">
+        <div class="card col-6 col-md-12 col-lg-6 offset-lg-3 show-card listing-card">
             <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
             <div class="card-body">
                 <p class="card-text">
@@ -52,14 +56,14 @@
 
     <% if(currentUser && listing.owner._id.equals(currentUser._id)){ %>
         <div class="btns">
-            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark offset-3 add-btn">Edit</a>
+            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark offset-lg-3 add-btn">Edit</a>
             <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
-                <button class="btn btn-dark offset-4">Delete</button>
+                <button class="btn btn-dark offset-lg-4 offset-md-2 btn-size">Delete</button>
             </form>
         </div>
         <% } %>
 
-            <div class="col-6 offset-lg-3 reviews-size">
+            <div class="col-lg-6 col-md-12 offset-lg-3 reviews-size">
                 <% if(currentUser){ %>
                     <br>
                     <h4>Leave a Review</h4>
@@ -95,7 +99,7 @@
                     <p><b>All reviews</b></p>
                     <div class="row">
                         <% for(review of listing.reviews){ %>
-                            <div class="card col-12 col-lg-6 mb-3">
+                            <div class="card col-12 col-md-6 col-lg-6 mb-3">
                                 <div class="card-body">
                                     <div class="card-title">
                                         <%= review.author.username %>
