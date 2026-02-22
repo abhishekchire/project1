@@ -135,9 +135,8 @@ body {
 
 /* aboutus page */
 .aboutus {
-    width: 23rem;
-    height: 20rem;
-    margin-left: 1rem;
+    width: 21rem;
+    height: auto;
 }
 
 .size {
