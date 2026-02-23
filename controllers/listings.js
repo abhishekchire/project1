@@ -1,9 +1,9 @@
 const Listing=require('../models/listing');
 
-module.exports.index=async (req, res) => {
-    let alllistings = await Listing.find();
-    res.render("listings/index.ejs", { alllistings });
-}
+// module.exports.index=async (req, res) => {
+//     let alllistings = await Listing.find();
+//     res.render("listings/index.ejs", { alllistings });
+// }
 
 //filters
 module.exports.lowlistingfunk=async(req, res) => {
@@ -55,9 +55,6 @@ module.exports.creatListing=async(req,res,next)=>{
 module.exports.renderEdit=async (req, res) => {
     let { id } = req.params;
     let listing = await Listing.findById(id);
-
-    // let originalImageUrl=listing.image.url;
-    // originalImageUrl=originalImageUrl.replace("/upload","/upload/w_250");
     res.render("listings/edit.ejs", { listing});
 };
 
