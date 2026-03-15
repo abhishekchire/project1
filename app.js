@@ -29,7 +29,7 @@ const { title } = require('process');
 const MONGO_URL = process.env.ATLASDB_URL;
 
 main().then(() => {
-    console.log('connected to db');
+    console.log('connected to database');
 
 }).catch((err) => {
     console.log(err);
