@@ -1,5 +1,5 @@
 <style>
-  .btn-search{
+  .btn-search {
     background-color: #fe424d;
     color: white;
     border-radius: 25px;
@@ -7,12 +7,12 @@
     padding: 0 1rem 0 1rem;
   }
 
-  .btn-search:hover{
+  .btn-search:hover {
     background-color: #fe424d;
     color: white;
   }
 
-  .inp{
+  .inp {
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
@@ -20,26 +20,56 @@
 </style>
 
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top mb-3">
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-brands fa-airbnb airbnb-logo"></i></a>
+    <a class="navbar-brand" href="/listings"><svg width="240" height="70" viewBox="0 0 260 90"
+        xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Icon (location + home combo) -->
+        <g transform="translate(20,15)">
+          <!-- Pin shape -->
+          <path d="M30 0C18 0 8 10 8 22c0 16 22 38 22 38s22-22 22-38C52 10 42 0 30 0z" fill="#ff385c" />
+
+          <!-- Home inside -->
+          <path d="M20 28 L30 20 L40 28 V38 H20 Z" fill="white" />
+          <rect x="27" y="30" width="6" height="8" fill="#ff385c" />
+        </g>
+
+        <!-- Brand Name -->
+        <text x="90" y="50" font-family="Poppins, sans-serif" font-size="26" fill="#222" font-weight="600">
+          Wanderlust
+        </text>
+
+        <!-- Tagline -->
+        <text x="90" y="70" font-family="Poppins, sans-serif" font-size="12" fill="#777">
+          Stay Anywhere. Feel at Home.
+        </text>
+
+      </svg></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+      </div>
+      <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
+      </div>
+      <div class="navbar-nav">
+        <a class="nav-link" href="/orders">My Bookings</a>
       </div>
 
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search" action="/listings" method="get">
-        <input class="form-control me-2 inp" name="search" type="search" placeholder="Search destinations."/>
-        <button class="btn btn-search" type="submit"><i style="display: inline;" class="fa-solid fa-magnifying-glass "></i> Search</button>
-      </form>
+          <input class="form-control me-2 inp" name="search" type="search" placeholder="Search destinations." />
+          <button class="btn btn-search" type="submit"><i style="display: inline;"
+              class="fa-solid fa-magnifying-glass "></i> Search</button>
+        </form>
       </div>
 
       <div class="navbar-nav ms-auto">
-         <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
         <% if(!currentUser){ %>
           <a class="nav-link" href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Log in</b></a>

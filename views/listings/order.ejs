@@ -1,0 +1,166 @@
+<% layout("/layouts/boilerplate") %>
+    <style>
+        /* Title */
+.order-title {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+}
+
+/* Empty State */
+.empty-state {
+    padding-bottom: 10px;
+}
+
+.empty-img {
+    width: 20rem;
+    
+}
+
+/* Explore Button */
+.explore-btn {
+    background: #ff385c;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 28px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.explore-btn:hover {
+    background: #e03150;
+    color: white;
+}
+
+/* Card */
+.order-card {
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.order-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.img-wrapper {
+    position: relative;
+}
+
+.img-wrapper img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Badge */
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #00c853;
+    color: white;
+    padding: 6px;
+    border-radius: 20px;
+    font-size: 0.5rem;
+}
+
+/* Price */
+.price {
+    color: #ff385c;
+    font-weight: 600;
+}
+
+/* Description */
+.desc {
+    font-size: 0.9rem;
+    color: #6c757d;
+    min-height: 50px;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    border-radius: 30px;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    transition: 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #dc3545;
+    color: white;
+}
+    </style>
+        <div class="container py-1">
+
+            <!-- Title -->
+            <h2 class="text-center fw-bold order-title mt-3">My Bookings</h2>
+
+            <!-- If No Orders -->
+            <% if (orders.length===0) { %>
+                <div class="empty-state text-center mb-3">
+
+                    <img src="/images/noOrder1.png" alt="No Orders" class="empty-img">
+
+                    <h4 class=" fw-semibold text-dark">No Bookings Yet</h4>
+
+                    <p class="text-muted mb-4">
+                        You haven’t booked any stays yet. Start exploring amazing places!
+                    </p>
+
+                    <a href="/listings" class="btn explore-btn">
+                        Explore Listings
+                    </a>
+                </div>
+                <% } %>
+
+                    <!-- Orders Grid -->
+                    <div class="row g-4 justify-content-center">
+
+                        <% orders.forEach(order=> { %>
+
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="card order-card border-0">
+
+                                    <!-- Image -->
+                                    <div class="img-wrapper">
+                                        <img src="<%= order.listing.image.url %>" class="card-img-top">
+
+                                        <span class="status-badge">
+                                            Booked
+                                        </span>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="card-body text-center d-flex flex-column">
+
+                                        <h5 class="fw-semibold mb-2">
+                                            <%= order.listing.title %>
+                                        </h5>
+
+                                        <p class="price mb-2">
+                                            $ <%= order.listing.price %>
+                                        </p>
+
+                                        <p class="desc mb-3">
+                                            <%= order.listing.description.substring(0, 70) %>...
+                                        </p>
+
+                                        <!-- Button -->
+                                        <form action="/orders/<%= order._id %>?_method=DELETE" method="POST"
+                                            class="mt-auto">
+                                            <button class="btn cancel-btn mb-2 px-4">
+                                                Cancel booking
+                                            </button>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <% }); %>
+
+                    </div>
+        </div>

@@ -1,65 +1,126 @@
 <% layout("/layouts/boilerplate") %>
+    <%- include("../includes/filters.ejs") %>
 
-<style>
-@media(min-width:768px){
-    .aboutus{
-        padding-left: 2rem;
-        width: 80%;
-    }
-}
-</style>
+        <style>
+            /* Responsive image */
+            @media(min-width:768px) {
+                .aboutus {
+                    padding-left: 2rem;
+                    width: 100%;
+                }
+            }
+
+            /* Page styling */
+            .aboutus-container {
+                padding-bottom: 20px;
+            }
+
+            /* Typography */
+            .size {
+                color: #555;
+                line-height: 1.7;
+                font-size: 15px;
+            }
+
+            /* Headings */
+            h2,
+            h4 {
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            /* Image */
+            .aboutus {
+                max-height: 350px;
+                object-fit: cover;
+                border-radius: 15px;
+                width: 100%;
+            }
+
+            /* Card-like section */
+            .aboutus-container .row {
+                align-items: center;
+            }
+
+            /* List styling */
+            ul.size li {
+                margin-bottom: 10px;
+            }
+
+            /* Container spacing */
+            .container {
+                margin-top: 20px;
+            }
+        </style>
 
 
-    <div class="aboutus-container container">
-        <div class="row">
-            <div class="col-lg-6 col-sm-12">
-                <h2>About Us</h2>
-                <p class="size">Welcome to Wanderlust, your ultimate travel companion! We are passionate about helping
-                    you discover
-                    the
-                    world's most iconic cities and unforgettable experiences. Our mission is to inspire and empower
-                    travelers to
-                    explore new destinations, create lasting memories, and connect with cultures around the globe.</p>
-                <h4>Our Story</h4>
-                <p class="size">Wanderlust was born out of a shared love for travel and a desire to make it easier for
-                    everyone to
-                    experience
-                    the joy of exploring new places. Our team of travel enthusiasts has curated a platform that offers a
-                    wide
-                    range of listings, from cozy accommodations to unique experiences, all designed to make your travel
-                    planning
-                    seamless and enjoyable.</p>
+        <div class="aboutus-container container">
+            <div class="row g-4">
 
-            </div>
-            <div class="col-lg-6 col-sm-12 mr-2">
-                <img src="\images\abouts2.jpg" alt="image"
-                    class="aboutus">
+                <!-- Text -->
+                <div class="col-lg-6 col-sm-12">
+                    <h2>About Us</h2>
+
+                    <p class="size">
+                        Welcome to Wanderlust, your ultimate travel companion! We are passionate about helping
+                        you discover the world's most iconic cities and unforgettable experiences. Our mission is to
+                        inspire
+                        and empower travelers to explore new destinations, create lasting memories, and connect with
+                        cultures
+                        around the globe.
+                    </p>
+
+                    <h4>Our Story</h4>
+
+                    <p class="size">
+                        Wanderlust was born out of a shared love for travel and a desire to make it easier for everyone
+                        to
+                        experience the joy of exploring new places. Our team of travel enthusiasts has curated a
+                        platform that
+                        offers a wide range of listings, from cozy accommodations to unique experiences, all designed to
+                        make
+                        your travel planning seamless and enjoyable.
+                    </p>
+                </div>
+
+                <!-- Image -->
+                <div class="col-lg-6 col-sm-12 text-center">
+                    <img src="/images/abouts2.jpg" alt="image" class="aboutus">
+                </div>
+
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <h4>What We Offer</h4>
-        <ul class="size">
-            <li><strong>Diverse Listings:</strong> Explore a wide variety of accommodations, from charming
-                boutique
-                hotels to cozy homestays, all carefully selected to provide you with authentic local
-                experiences.</li>
-            <li><strong>Curated Experiences:</strong> Discover unforgettable activities and tours that allow you
-                to
-                immerse yourself in the culture and beauty of each destination.</li>
-            <li><strong>User-Friendly Platform:</strong> Our intuitive website makes it easy for you to find and
-                book
-                your perfect travel experience with just a few clicks.</li>
-            <li><strong>Customer Support:</strong> Our dedicated support team is here to assist you every step
-                of the
-                way, ensuring your travel plans go smoothly.</li>
-        </ul>
 
-        <h4>Join Us on This Journey</h4>
-        <p class="size">Whether you're a seasoned traveler or embarking on your first adventure, Wanderlust is here to
-            inspire and
-            guide you. Join our community of explorers and let us help you create unforgettable memories in the
-            world's
-            most iconic cities. Happy travels!</p>
-    </div>
+        <div class="container mt-4">
+
+            <h4>What We Offer</h4>
+
+            <ul class="size">
+                <li><strong>Diverse Listings:</strong> Explore a wide variety of accommodations, from charming boutique
+                    hotels to cozy homestays, all carefully selected to provide you with authentic local experiences.
+                </li>
+
+                <li><strong>Curated Experiences:</strong> Discover unforgettable activities and tours that allow you to
+                    immerse yourself in the culture and beauty of each destination.</li>
+
+                <li><strong>User-Friendly Platform:</strong> Our intuitive website makes it easy for you to find and
+                    book
+                    your perfect travel experience with just a few clicks.</li>
+
+                <li><strong>Customer Support:</strong> Our dedicated support team is here to assist you every step of
+                    the
+                    way, ensuring your travel plans go smoothly.</li>
+            </ul>
+
+            <h4 class="mt-4">Join Us on This Journey</h4>
+
+            <p class="size">
+                Whether you're a seasoned traveler or embarking on your first adventure, Wanderlust is here to inspire
+                and
+                guide you. Join our community of explorers and let us help you create unforgettable memories in the
+                world's
+                most iconic cities. Happy travels!
+            </p>
+
+        </div>

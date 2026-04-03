@@ -2,7 +2,8 @@
     .noresult {
         border: none;
     }
-    .bg-light{
+
+    .bg-light {
         background-color: white;
     }
 
@@ -24,44 +25,161 @@
             height: 50%;
         }
     }
+
+    /*g style */
+
+    body {
+        background-color: white !important;
+    }
+
+    /* Card hover effect */
+    .listing-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .listing-card:hover {
+        transform: translateY(-6px);
+    }
+
+    /* Image zoom effect */
+    .listing-img {
+        height: 260px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .listing-card:hover .listing-img {
+        transform: scale(1.05);
+    }
+
+    /* Remove link underline */
+    a {
+        text-decoration: none;
+    }
+
+    /* Button hover */
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    /* noresults */
+    /* Image styling */
+    .no-result-img {
+        height: 200px;
+        object-fit: contain;
+        opacity: 0.9;
+        background-color: white !important;
+    }
+
+    /* Smooth animation */
+    .no-result-img {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-8px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
 </style>
 <% layout("/layouts/boilerplate") %>
-<%- include("../includes/filters.ejs") %>
+    <%- include("../includes/filters.ejs") %>
 
-    <body>
-        <div class="bg-light">
-            <div class="container d-flex flex-column justify-content-center align-items-center">
-                <% if(allListings.length===0 && search){ %>
-                    <div class="card noresult col-sm-12 col-md-12 col-lg-6" style="width: 20rem;">
-                        <img src="/images/ChatGPT.png" class="card-img-top imgNoResult" alt="...">
-                        <div class="card-body card-bg-light">
-                            <h5 class="card-title">No results found for "<%= search %>"</h5>
-                            <p class="card-text">You may have entered an incorrect search term or there are no listings
-                                matching your criteria.</p>
-                            <a href="/listings" class="btn btn-outline-dark">Back to all listings</a>
-                        </div>
-                    </div>
-                    <% } %>
-            </div>
-            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-                <% for(let listing of allListings){ %>
-                    <div class="card-col listing-card">
-                        <a href="/listings/<%= listing._id %>" class="listing-link">
-                            <img src="<%= listing.image.url %>" class="card-img-top effect" alt="listing-image"
-                                style="height: 20rem">
-                            <div class="card-body">
-                                <p class="card-text card-info">
-                                    <b>
-                                        <%= listing.title %>
-                                    </b>
-                                    <br>
-                                    &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
-                                        <i class="tax-info">&nbsp; &nbsp;+18% GST</i>
-                                </p>
+        <body style="background-color: white !important;">
+            <div class="bg-light py-4">
+
+                <!-- No Results -->
+                <div class="container d-flex justify-content-center align-items-center">
+
+                    <% if(allListings.length===0 && search){ %>
+
+                        <div class="text-center">
+
+                            <!-- Image -->
+                            <img src="/images/ChatGPT.png" class="img-fluid mb-4 no-result-img" alt="No results">
+
+                            <!-- Heading -->
+                            <h4 class="fw-bold mb-2">
+                                No stays found for "<span class="text-danger">
+                                    <%= search %>
+                                </span>"
+                            </h4>
+
+                            <!-- Description -->
+                            <p class="text-muted mb-4">
+                                We couldn’t find any matches. Try adjusting your search or explore all available stays.
+                            </p>
+
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <a href="/listings" class="btn btn-dark rounded-pill px-4">
+                                    Explore All
+                                </a>
+
+                                <a href="/" class="btn btn-outline-secondary rounded-pill px-4">
+                                    Go Home
+                                </a>
                             </div>
-                        </a>
+
+                        </div>
+
+                        <% } %>
+
+                </div>
+
+                <!-- Listings Grid -->
+                <div class="container" style="background-color: white;">
+                    <div class="row g-4">
+                        <h3 class="fw-bold ">Popular Stays</h3>
+                        <% for(let listing of allListings){ %>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+
+                                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 listing-card">
+
+                                        <!-- Image -->
+                                        <div class="overflow-hidden">
+                                            <img src="<%= listing.image.url %>" class="card-img-top listing-img"
+                                                alt="listing-image">
+                                        </div>
+
+                                        <!-- Info -->
+                                        <div class="card-body">
+
+                                            <h6 class="fw-bold mb-1">
+                                                <%= listing.title %>
+                                            </h6>
+
+                                            <p class="mb-1 text-dark fw-semibold">
+                                                ₹ <%= listing.price.toLocaleString("en-IN") %>
+                                                    <span class="text-muted fw-normal"> / night</span>
+                                            </p>
+
+                                            <small class="text-muted">
+                                                +18% GST
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </a>
+                            </div>
+
+                            <% } %>
+
                     </div>
-                    <% } %>
+                </div>
+
             </div>
-        </div>
-    </body>
+        </body>

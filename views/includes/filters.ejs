@@ -1,43 +1,79 @@
-<div class="filters" id="filters">
-    <div class="row row-cols-lg-4 mt-1 mb-1 row-cols-4">
-        <div class="filter">
+<style>
+    /* Filter container */
+.filters {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Buttons */
+.filter-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.filter-btn:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-2px);
+}
+
+/* Icon styling */
+.filter-btn i {
+    font-size: 16px;
+    color: #ff385c;
+}
+</style>
+
+<div class="filters py-2">
+
+    <div class="container">
+        <div class="d-flex justify-content-between gap-3 flex-wrap">
+
+            <!-- Low Price -->
             <form action="/listings/low" method="get">
-                <div>
+                <button class="filter-btn">
                     <i class="fa-solid fa-arrow-trend-down"></i>
-                </div>
-                <button>Low price</button>
+                    <span>Low Price</span>
+                </button>
             </form>
-        </div>
-        <div class="filter">
+
+            <!-- High Price -->
             <form action="/listings/high" method="get">
-                <div>
+                <button class="filter-btn">
                     <i class="fa-solid fa-arrow-trend-up"></i>
-                </div>
-                <button>High price</button>
+                    <span>High Price</span>
+                </button>
             </form>
-        </div>
-        <div class="filter">
+
+            <!-- About -->
             <form action="/listings/aboutUs" method="get">
-                <div>
+                <button class="filter-btn">
                     <i class="fa-solid fa-users"></i>
-                </div>
-                <button type="submit">about us</button>
+                    <span>About</span>
+                </button>
             </form>
-        </div>
-        <div class="filter">
+
+            <!-- Contact -->
             <form action="/listings/contactus" method="get">
-            <div>
-                <i class="fa-solid fa-square-phone"></i>
-            </div>
-            <button>Contect us</button>
+                <button class="filter-btn">
+                    <i class="fa-solid fa-square-phone"></i>
+                    <span>Contact</span>
+                </button>
             </form>
+
         </div>
     </div>
-    <hr class="mb-2">
-</div>
 
-<!-- <div class="form-check-reverse form-switch taxCal">
-    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-    <label class="form-check-label togglebtn" for="switchCheckDefault">Display total after
-        taxes</label>
-</div> -->
+    <hr class="mt-3">
+</div>

@@ -16,6 +16,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user.js');
 const Listing = require('./models/listing.js');
+const Order = require('./models/order.js');
 
 
 //routers files
@@ -87,6 +88,10 @@ app.use((req, res, next) => {
     next();
 })
 
+app.get("/", (req, res) => {
+    res.render("listings/home");
+});
+
 app.get("/listings", async (req, res) => {
     let search = req.query.search?.trim();
     let allListings;
@@ -117,6 +122,47 @@ app.get("/listings/aboutUs", async (req, res) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", UserRouter);
+
+// order routes
+// Create Order
+app.post("/listings/:id/order", async (req, res) => {
+    if (!req.isAuthenticated()) {
+        req.flash("error", "Please login first!");
+        return res.redirect("/login");
+    }
+
+    const listing = await Listing.findById(req.params.id);
+
+    const newOrder = new Order({
+        listing: listing._id,
+        user: req.user._id
+    });
+
+    await newOrder.save();
+
+    req.flash("success", "Order placed successfully!");
+    res.redirect("/orders");
+});
+
+// My Orders
+app.get("/orders", async (req, res) => {
+    if (!req.isAuthenticated()) {
+        req.flash("error", "Login required!");
+        return res.redirect("/login");
+    }
+
+    const orders = await Order.find({ user: req.user._id })
+        .populate("listing");
+
+    res.render("listings/order.ejs", { orders });
+});
+
+app.delete("/orders/:id", async (req, res) => {
+    await Order.findByIdAndDelete(req.params.id);
+
+    req.flash("success", "Order cancelled!");
+    res.redirect("/orders");
+});
 
 
 app.use((err, req, res, next) => {

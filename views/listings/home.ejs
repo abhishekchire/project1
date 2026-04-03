@@ -1,0 +1,105 @@
+<% layout("/layouts/boilerplate") %>
+    <%- include("../includes/filters.ejs") %>
+
+        <body>
+
+
+            <!-- 🏠 Hero Section -->
+            <section class="hero d-flex align-items-center">
+                <div class="container text-center text-white">
+                    <h1 class="fw-bold">Find Your Perfect Stay</h1>
+                    <p>Discover amazing places at the best prices</p>
+
+                    <!-- Search Bar -->
+                        <div class="container">
+                            <h3>Ready to explore?</h3>
+                            <a href="/listings" class="btn btn-light rounded-pill mt-3 px-4">
+                                Explore Listings
+                            </a>
+                        </div>
+                </div>
+            </section>
+
+
+            <!-- 🏡 Popular Listings -->
+            <div class="container mt-5">
+                <h3 class="fw-bold mb-4">Popular Stays</h3>
+
+                <div class="row g-4">
+
+                    <!-- Card 1 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card listing-card">
+                            <a href="/listings">
+                            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+                                class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="fw-bold">Luxury Villa</h6>
+                                <p>₹4,500 / night</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card listing-card">
+                            <a href="/listings">
+                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
+                                class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="fw-bold">Modern Apartment</h6>
+                                <p>₹2,800 / night</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card listing-card">
+                            <a href="/listings">
+                            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb"
+                                class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="fw-bold">Beach House</h6>
+                                <p>₹6,000 / night</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 🌟 Features Section -->
+            <section class="features text-center mt-5 py-5">
+                <div class="container">
+                    <h3 class="fw-bold mb-4">Why Choose Wanderlust?</h3>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-house fa-2x text-danger"></i>
+                            <h5 class="mt-2">Unique Stays</h5>
+                            <p>Handpicked homes & experiences</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-tags fa-2x text-danger"></i>
+                            <h5 class="mt-2">Best Prices</h5>
+                            <p>Affordable stays for everyone</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <i class="fa-solid fa-headset fa-2x text-danger"></i>
+                            <h5 class="mt-2">24/7 Support</h5>
+                            <p>We are here to help anytime</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        </body>
