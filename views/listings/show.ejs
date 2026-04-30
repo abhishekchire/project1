@@ -46,6 +46,8 @@
 </style>
 <%- layout("/layouts/boilerplate") %>
     <%- include("../includes/filters.ejs") %>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
         <div class="container py-4">
 
             <!-- Title -->
@@ -84,10 +86,8 @@
 
                             <p class="text-muted mt-2">
                                 📍 <%= listing.location %>, <%= listing.country %>
+                                        <div id="map" style="height: 300px; margin-top: 15px; border: black 1px solid;" class="rounded border-dark-3"></div>
                             </p>
-                            <form action="/listings/<%= listing._id %>/order" method="POST">
-                                <button class="btn btn-success">Book Now</button>
-                            </form>
 
                         </div>
                     </div>
@@ -200,3 +200,33 @@
                     </div>
 
         </div>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script>
+            const locationText = "<%= listing.location %>, <%= listing.country %>";
+
+            const map = L.map('map').setView([20, 0], 2);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${locationText}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        const lat = data[0].lat;
+                        const lon = data[0].lon;
+
+                        map.setView([lat, lon], 12);
+
+                        // ✅ UPDATED PART HERE
+                        L.marker([lat, lon])
+                            .addTo(map)
+                            .bindPopup(`
+                        <b><%= listing.title %></b><br>
+                        <%= listing.location %>
+                    `)
+                            .openPopup();
+                    }
+                });
+        </script>

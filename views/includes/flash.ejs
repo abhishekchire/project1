@@ -1,13 +1,56 @@
-<% if (success && success.length) { %>
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-        <%- success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<style>
+    /* Flash Base */
+    .flash {
+        padding: 14px 20px;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 14px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        animation: slideIn 0.4s ease;
+    }
+
+    /* Success */
+    .flash-success {
+        background: linear-gradient(135deg, #28a745, #4cd964);
+    }
+
+    /* Error */
+    .flash-error {
+        background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+    }
+
+    /* Animation */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<% if (success && success.length> 0) { %>
+    <div class="mt-3 flash flash-success alert alert-success alert-dismissible fade show col-4 offset-4 text-center"
+        role="alert">
+        <%= success %>
     </div>
     <% } %>
 
-        <% if (error && error.length) { %>
-            <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-                <%- error %>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <% if (error && error.length> 0) { %>
+            <div class="mt-3 flash flash-error alert alert-danger alert-dismissible fade show col-4 offset-4 text-center"
+                role="alert">
+                <%= error %>
             </div>
             <% } %>
+
+                <script>
+                    setTimeout(() => {
+                        document.querySelectorAll('.flash').forEach(el => {
+                            el.style.display = 'none';
+                        });
+                    }, 3000);
+                </script>

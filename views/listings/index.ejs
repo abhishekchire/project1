@@ -69,7 +69,7 @@
         height: 200px;
         object-fit: contain;
         opacity: 0.9;
-        background-color: white !important;
+
     }
 
     /* Smooth animation */
@@ -95,10 +95,11 @@
     <%- include("../includes/filters.ejs") %>
 
         <body style="background-color: white !important;">
-            <div class="bg-light py-4">
+            <div class="bg-light">
 
                 <!-- No Results -->
-                <div class="container d-flex justify-content-center align-items-center">
+                <div class="container d-flex justify-content-center align-items-center"
+                    style="background-color: white;">
 
                     <% if(allListings.length===0 && search){ %>
 
@@ -139,44 +140,49 @@
                 <!-- Listings Grid -->
                 <div class="container" style="background-color: white;">
                     <div class="row g-4">
-                        <h3 class="fw-bold ">Popular Stays</h3>
-                        <% for(let listing of allListings){ %>
+                        <% if(allListings.length===0 && search){ %>
+                            <h3 class="fw-bold" style="visibility: hidden;">Popular Stays</h3>
+                            <% }else{ %>
+                                <h3 class="fw-bold">Popular Stays</h3>
+                                <% } %>
+                                    <% for(let listing of allListings){ %>
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <a href="/listings/<%= listing._id %>"
+                                                class="text-decoration-none text-dark">
 
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+                                                <div
+                                                    class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 listing-card">
 
-                                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 listing-card">
+                                                    <!-- Image -->
+                                                    <div class="overflow-hidden">
+                                                        <img src="<%= listing.image.url %>"
+                                                            class="card-img-top listing-img" alt="listing-image">
+                                                    </div>
 
-                                        <!-- Image -->
-                                        <div class="overflow-hidden">
-                                            <img src="<%= listing.image.url %>" class="card-img-top listing-img"
-                                                alt="listing-image">
+                                                    <!-- Info -->
+                                                    <div class="card-body">
+
+                                                        <h6 class="fw-bold mb-1">
+                                                            <%= listing.title %>
+                                                        </h6>
+
+                                                        <p class="mb-1 text-dark fw-semibold">
+                                                            ₹ <%= listing.price.toLocaleString("en-IN") %>
+                                                                <span class="text-muted fw-normal"> / night</span>
+                                                        </p>
+
+                                                        <small class="text-muted">
+                                                            +18% GST
+                                                        </small>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </a>
                                         </div>
 
-                                        <!-- Info -->
-                                        <div class="card-body">
-
-                                            <h6 class="fw-bold mb-1">
-                                                <%= listing.title %>
-                                            </h6>
-
-                                            <p class="mb-1 text-dark fw-semibold">
-                                                ₹ <%= listing.price.toLocaleString("en-IN") %>
-                                                    <span class="text-muted fw-normal"> / night</span>
-                                            </p>
-
-                                            <small class="text-muted">
-                                                +18% GST
-                                            </small>
-
-                                        </div>
-
-                                    </div>
-
-                                </a>
-                            </div>
-
-                            <% } %>
+                                        <% } %>
 
                     </div>
                 </div>
